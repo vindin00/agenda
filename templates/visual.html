@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>🎃🎉✨ EVENTOS 🎃🎉✨</title>
+    <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/425/425868.png">
+<style>
+    body{
+     background-color: #F2F0EB;
+}
+    h1{
+        font-size: 369%;
+        font-family: "Baskerville Old Face";
+        alignment: center;
+
+        position: relative;
+
+    }
+   .column {
+  alignment: center;
+    float: snap;
+   width: 100%;
+    padding-bottom: 50px;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+  width: 100%;
+  border: 3px solid saddlebrown;
+    color: black;
+    font-family: "Arial Narrow";
+    background-color:tomato;
+}
+    tr{
+        align-content: center;
+
+    }
+    th{
+        align-content: center;
+        border: 2px solid sienna;
+
+    }
+    td{
+        alignment: center;
+        align-content: center;
+        align-self: auto;
+        position: center;
+        font-family: "Agency FB";
+        font-size: larger;
+        font-palette: dark;
+        border: 2px solid brown;
+        text-align: center;
+
+
+    }
+    tr:nth-child(even) {
+  background-color: #f2f2f2;
+
+}
+    input:hover{
+        background-color: darksalmon;
+        cursor: pointer;
+    }
+</style>
+
+</head>
+<body>
+<div style="background-color: indianred">
+<h1> 🥳🤠😷🤯🤩 Eventos proximos 🤩🤯😷🧐🥳 </h1>
+</div>
+<div class="column">
+<table>
+<tr>
+    <th> Evento </th>
+    <th> Día </th>
+    <th> Mes </th>
+    <th> Año </th>
+</tr>
+ {% for even in ctr %}
+     <tr style="alignment: center">
+         <td style="text-align: start">{{ even[0] }}</td>
+         <td>{{ even[1] }}</td>
+         <td>{{ even[2] }}</td>
+         <td> {{ even[3] }}</td>
+     </tr>
+ {% endfor %}
+</table>
+</div>
+<div>
+     <h3 style="text-align: center"> 📆👻🎃⬅️Regresar a calendario 📆👻🎃⬅️</h3>
+        <form action='/' method="get" >
+            <input style=" width: 100% ;text-align: center ;alignment: center;position: relative;font-family: 'Arial Rounded MT Bold' ;font-size: 25px ;background-color: indianred; border: #ffc107 1px" type="submit" name="consul" value="Consultar Calendario">
+             </form>
+</div>
+
+</body>
+</html>

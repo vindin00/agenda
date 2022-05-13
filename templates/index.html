@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>👹🐸📆 CALENDARIO 👹🐸📆</title>
+    <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/425/425868.png">
+    <link type="text/css"  rel="stylesheet" href="{{ url_for('static', filename='/bootstrap.css') }}"/>
+
+ <style>
+* {
+  box-sizing: border-box;
+}
+
+body{
+    background-color: #F2F0EB;
+}
+h4{
+    font-family: Broadway;
+    font-size: 20px;
+    color: crimson;
+    alignment: center;
+    position: relative;
+}
+input{
+    background: none;
+    border: none;
+    font-family: "Arial Narrow" ;
+    font-size: 110%;
+}
+input:hover{
+    cursor: pointer;
+}
+
+.column {
+  alignment: center;
+    float: snap;
+   width: 100%;
+  padding-left: 20px;
+    padding-bottom: 50px;
+}
+
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+  width: 100%;
+  border: 1px solid #ddd;
+    color: black;
+    font-family: "Arial Narrow";
+    background-color: #F2522E;
+}
+
+th, td {
+  text-align: center;
+  padding: 16px;
+    font-family: "Arial Narrow";
+}
+
+td:hover{
+    background-color: coral;
+    cursor: pointer;
+
+}
+
+tr:nth-child(even) {
+  background-color: #f2f2f2;
+
+}
+h3{
+    text-align: center;
+}
+
+</style>
+</head>
+
+<body>
+<div class="container">
+<div style=" background-color: indianred;  top: 0px; border: crimson; border-radius: 10px;width: available"  >
+    <h3 class="text-center" style="font-family: Broadway;font-size: 50px"> Angenda de Eventos {{ fecha.year }} </h3>
+</div>
+<div style="alignment: right">
+    <form action='/ver/' method="post" >
+    <input style=" background-color: #dc3545; alignment: right; float: right" type="submit" name="consul" value="Consultar Eventos">
+    </form>
+</div>
+<div>
+    {% set semana_addr = ['Dom', 'Lun', 'Mar', 'Mie', 'Jue', 'Vie', 'Sab'] %}
+    {% for mes_addr, mesInfo in content.items()%}
+
+    <div style="overflow-x:auto;" class="column" >
+
+    {% if mes_addr == 'Jan' %}
+
+    <h4 class="text-center">Enero</h4>
+    {% endif %}
+    {% if mes_addr == 'Feb' %}
+
+    <h4 class="text-center">Febrero</h4>
+    {% endif %}
+    {% if mes_addr == 'Mar' %}
+
+    <h4 class="text-center">Marzo</h4>
+    {% endif %}
+    {% if mes_addr == 'Apr' %}
+
+    <h4 class="text-center">Abril</h4>
+    {% endif %}
+    {% if mes_addr == 'May' %}
+
+    <h4 class="text-center">Mayo</h4>
+    {% endif %}
+    {% if mes_addr == 'Jun' %}
+
+    <h4 class="text-center">Junio</h4>
+    {% endif %}
+    {% if mes_addr == 'Jul' %}
+
+    <h4 class="text-center">Julio</h4>
+    {% endif %}
+    {% if mes_addr == 'Aug' %}
+
+    <h4 class="text-center">Agosto</h4>
+    {% endif %}
+    {% if mes_addr == 'Sep' %}
+
+    <h4 class="text-center">Septiembre</h4>
+    {% endif %}
+    {% if mes_addr == 'Oct' %}
+
+    <h4 class="text-center">Octubre</h4>
+    {% endif %}
+    {% if mes_addr == 'Nov' %}
+
+    <h4 class="text-center">Noviembre</h4>
+    {% endif %}
+    {% if mes_addr == 'Dec' %}
+
+    <h4 class="text-center">Diciembre</h4>
+    {% endif %}
+
+
+        {% with _mes=false %}
+        {% if mes_addr == this_mes%}
+            <table style="background-color: crimson" class="table table-bordered">
+            {% set _mes = true %}
+        {% else %}
+            <table class="table table-bordered">
+        {% endif %}
+               <tr>
+                    {% for addr in semana_addr %}
+                        <th> {{ addr }} </th>
+                    {% endfor %}
+               </tr>
+               {% for semanas in mesInfo %}
+
+               <tr>
+                   {% for dia in semanas %}
+
+                       {% if dia == 0 %}
+                           <td>&nbsp</td>
+                       {% elif _mes== true and dia == fecha.day%}
+                           <form action='/lista/{{ mes_addr }}/{{ dia }}/{{ fecha.year }}' method="post" >
+                               <td style="background-color: darksalmon;"><input type="submit" name="{{ _mes}}" value="{{ dia }}"></td>
+                           </form>
+
+                           {% else %}
+                           <form action='/lista/{{ mes_addr}}/{{ dia  }}/{{ fecha.year }}' method="post" >
+                               <td><input  type="submit" name="{{ dia, _mes }}" value="{{ dia }}"></td>
+                           </form>
+
+
+
+                   {% endif %}
+                   {% endfor %}
+               </tr>
+               {% endfor %}
+        {% endwith %}
+        </table>
+    </div>
+    {% endfor %}
+</div>
+</div>
+</body>
+</html>

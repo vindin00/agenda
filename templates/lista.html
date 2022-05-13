@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/425/425868.png">
+    <title>👻🎄🎁 AGENDAR 👻🎄🎁</title>
+
+    <style>
+        input:hover{
+            cursor: pointer;
+        }
+        input{
+            alignment: center;
+            width: 100%;
+        }
+        body{
+    background-color: #F2F0EB;
+}
+h3{
+    alignment: center;
+    font-size: 48px;
+    width: 100%;
+    position: relative;
+    font-family: 'Baskerville Old Face';
+    font-palette: dark
+
+}
+h1{
+    font-family: "Baskerville Old Face";
+    font-palette: light;
+    font-size: 51px;
+    color: #1a1e21;
+    alignment: center;
+    position: relative;
+}
+    </style>
+</head>
+<body>
+{% if mesA.index(this_mes) > mesA.index(mes) %}
+
+
+    <div style="alignment: center">
+    <h3 style="text-align: center"> 😥😥😥😥  Ya no es posible ingresar un evento 😥😥😥😥</h3>
+        <form action='/ver/' method="post" >
+            <input style="alignment: center;position: relative;font-family: 'Arial Rounded MT Bold' ;font-size: 25px ;background-color: tomato; border: #ffc107 1px" type="submit" name="consul" value="Consultar Eventos">
+            <img style="padding-top: 10%;padding-left: 25%; width: 50%; height: 50%" src="https://hopme.mx/wp-content/uploads/2019/04/facebook-sad-logo-png-transparent.png" alt="THIS IS JUST PLAIN SAD">
+        </form>
+    </div>
+
+
+    {% elif mesA.index(this_mes) == mesA.index(mes) and dia < fecha.day %}
+    <div style="alignment: center">
+    <h3 style="text-align: center"> 😥😥😥😥  Ya no es posible ingresar un evento 😥😥😥😥</h3>
+        <form action='/ver/' method="post" >
+            <input style="alignment: center;position: relative;font-family: 'Arial Rounded MT Bold' ;font-size: 25px ;background-color: tomato; border: #ffc107 1px" type="submit" name="consul" value="Consultar Eventos">
+            <img style="padding-top: 10%;padding-left: 25%; width: 50%; height: 50%" src="https://hopme.mx/wp-content/uploads/2019/04/facebook-sad-logo-png-transparent.png" alt="THIS IS JUST PLAIN SAD">
+        </form>
+    </div>
+{% else %}
+    <form action='/hola/{{ dia }}/{{ mes }}/{{ year }}/' method="post">
+    <h1>📜📜📜📜   Ingrese el nombre de su evento 📜📜📜📜   </h1>
+    <input style="cursor: auto; width: 98%; position: relative; border-color: #dc3545; border-radius: 2px" type="text" name="Evento" >
+        <h2></h2>
+    <input style="text-align: center; alignment: center; position: relative; font-family: 'Arial Rounded MT Bold'; font-size: 25px; background-color: #ffc107; border: #dc3545 1px" type="submit" name="envEvento" value="Enviar">
+    </form>
+    <h1></h1>
+    <h1></h1>
+    <img src="https://chumediaa.com/wp-content/uploads/2021/08/event-planner.png" alt="EVENTO.JPG" style="width: 70%; height: 70%; padding-left: 15%; padding-top: 5%">
+{% endif %}
+<div>
+      <h3 style="text-align: center"> 📆👻🎃⬅️Regresar a calendario 📆👻🎃⬅️</h3>
+        <form action='/' method="get" >
+            <input style="text-align: center;alignment: center;position: relative;font-family: 'Arial Rounded MT Bold' ;font-size: 25px ;background-color: tomato; border: #ffc107 1px" type="submit" name="consul" value="Consultar Calendario">
+             </form>
+</div>
+
+</body>
+</html>
